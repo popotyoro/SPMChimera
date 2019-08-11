@@ -12,12 +12,20 @@ import SPM
 class ViewController: UIViewController {
     
     @IBOutlet private weak var label: UILabel!
+    
+    private var viewModel: ViewModelInput!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = HelloMan().hello
+        viewModel = ViewModel(by: self)
+        
+        label.text = viewModel.text
     }
+}
 
-
+extension ViewController: ViewModelOutput {
+    func didUpdateLabel() {
+        print("labelDidUpdated!!!")
+    }
 }
 
